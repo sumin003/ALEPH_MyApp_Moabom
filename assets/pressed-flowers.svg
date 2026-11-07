@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 410 170" fill="none">
+<defs>
+ <g id="leaf"><path d="M0 0C-13-2-23-13-22-27-8-24-1-12 0 0Z" fill="#98ac85" stroke="#506c56" stroke-width="1.3"/><path d="m-18-22 16 19" stroke="#627b61"/></g>
+ <g id="sakura"><g fill="#edb2b2" stroke="#a66e73" stroke-width=".85"><path id="petal" d="M0-1C-3-4-11-12-7-17-5-20-2-18 0-16c2-3 5-4 7-1C11-11 4-3 0-1Z"/><use href="#petal" transform="rotate(72)"/><use href="#petal" transform="rotate(144)"/><use href="#petal" transform="rotate(216)"/><use href="#petal" transform="rotate(288)"/></g><g stroke="#936653" stroke-width=".9"><path d="m0 0 0-6m0 6 6-1m-6 1-4 5m4-5-5-3m5 3 4 4"/></g><circle r="2.7" fill="#e4bd68"/></g>
+ <g id="daisy"><g fill="#fffaf0" stroke="#9a9984" stroke-width=".9"><ellipse id="dpetal" cy="-9" rx="3.3" ry="7"/><use href="#dpetal" transform="rotate(45)"/><use href="#dpetal" transform="rotate(90)"/><use href="#dpetal" transform="rotate(135)"/><use href="#dpetal" transform="rotate(180)"/><use href="#dpetal" transform="rotate(225)"/><use href="#dpetal" transform="rotate(270)"/><use href="#dpetal" transform="rotate(315)"/></g><circle r="4.6" fill="#e6bd65" stroke="#8b8054" stroke-width=".9"/></g>
+</defs>
+<g opacity=".86" fill="#e7e9cf"><ellipse cx="208" cy="143" rx="132" ry="9"/></g>
+<g transform="rotate(-8 211 108)" stroke="#9ca690" stroke-width="1.1"><rect x="98" y="64" width="202" height="75" rx="3" fill="#dfe7d4"/><path d="m99 66 99 48 100-48m-198 70 66-43m129 44-68-43"/></g>
+<g transform="rotate(9 244 86)"><rect x="178" y="44" width="133" height="88" rx="2" fill="#fff8e9" stroke="#ae9b7c"/><rect x="183" y="49" width="123" height="78" rx="1" stroke="#d5c3a8" stroke-dasharray="2.6 3.2"/><g stroke="#ccbba5"><path d="M246 86h45m-46 8h39m-38 9h29"/></g><path d="M274 57h21v17h-21Z" fill="#f0d6c8" stroke="#c3a48d"/><path d="M278 70c5-9 8-6 12-9" stroke="#b8967c"/></g>
+<g fill="none" stroke="#5c755d" stroke-width="2" stroke-linecap="round"><path d="M151 148Q199 103 270 27m-75 74q8-34 6-57m17 32q36-13 56-9m-30-23 6-20"/><path d="M151 146Q180 74 154 28m18 66q-27-28-51-27m49 11q10-20 11-30"/><path d="M150 147q-21-40-56-54m46 34-7-24m25 37q67-18 88-42"/></g>
+<use href="#leaf" transform="translate(226 71) rotate(62) scale(.86)"/><use href="#leaf" transform="translate(210 86) rotate(-18) scale(.75)"/><use href="#leaf" transform="translate(184 110) rotate(76)"/><use href="#leaf" transform="translate(169 68) rotate(-7) scale(.83)"/><use href="#leaf" transform="translate(168 93) rotate(-34) scale(.9)"/><use href="#leaf" transform="translate(220 115) rotate(69) scale(.8)"/><use href="#leaf" transform="translate(130 116) rotate(-18) scale(.68)"/>
+<use href="#sakura" transform="translate(270 26) rotate(15) scale(.94)"/><use href="#sakura" transform="translate(250 25) rotate(-20) scale(.56)"/><use href="#sakura" transform="translate(201 42) rotate(-13) scale(.74)"/><use href="#sakura" transform="translate(274 67) rotate(18) scale(.69)"/>
+<use href="#daisy" transform="translate(154 27) rotate(12)"/><use href="#daisy" transform="translate(120 66) rotate(-12) scale(.8)"/><use href="#daisy" transform="translate(94 93) scale(.62)"/>
+<path d="m141 126 22 6-5 13-21-7Z" fill="#e6bd8e" opacity=".9"/>
+<g fill="#e2a7ac"><path d="M330 48q7-14 15-10-2 8-15 10Zm-246 5q-10-1-12-8 8-2 12 8Zm235 65q9-5 12 0-7 4-12 0Z"/></g>
+</svg>

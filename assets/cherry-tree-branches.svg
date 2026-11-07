@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-label="포근하고 둥근 형태의 벚꽃나무">
+<defs>
+<linearGradient id="background" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#fffdfa"/><stop offset="1" stop-color="#faf8ef"/></linearGradient>
+<linearGradient id="trunk" x1="0" y1="0" x2="1" y2=".3"><stop stop-color="#a66f58"/><stop offset=".48" stop-color="#ca9679"/><stop offset="1" stop-color="#a36c55"/></linearGradient>
+<linearGradient id="twig" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b67c60"/><stop offset=".58" stop-color="#d3a180"/><stop offset="1" stop-color="#a77460"/></linearGradient>
+<linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e9dba5"/><stop offset="1" stop-color="#b8bb8d"/></linearGradient>
+<radialGradient id="bud"><stop stop-color="#ffe4e6"/><stop offset="1" stop-color="#f1a9b8"/></radialGradient>
+<g id="sprig"><path d="M0 0 Q-7 -10 -14 -15" fill="none" stroke="#bc9a7c" stroke-width="2" stroke-linecap="round"/><path d="M-6 -5 Q-21 -15 -18 -24 Q-4 -20 -6 -5" fill="url(#leaf)" opacity=".86"/><ellipse cx="-15" cy="-17" rx="6.8" ry="8.5" transform="rotate(-35 -15 -17)" fill="url(#bud)"/></g>
+<g id="littleBloom"><g fill="#f9ced7" stroke="#fff2f0" stroke-width=".6"><ellipse cx="0" cy="-8" rx="6" ry="9"/><ellipse cx="0" cy="-8" rx="6" ry="9" transform="rotate(72)"/><ellipse cx="0" cy="-8" rx="6" ry="9" transform="rotate(144)"/><ellipse cx="0" cy="-8" rx="6" ry="9" transform="rotate(216)"/><ellipse cx="0" cy="-8" rx="6" ry="9" transform="rotate(288)"/></g><circle r="2.3" fill="#fff2c0"/></g>
+</defs>
+<rect width="1000" height="620" fill="url(#background)"/>
+<ellipse cx="500" cy="604" rx="280" ry="14" fill="#cfceb3" opacity=".23"/>
+<!-- A gently flared, shorter trunk rather than a tall straight pole. -->
+<path d="M482 602 Q494 550 491 484 Q488 432 498 380 Q498 346 502 314 L519 324 Q514 407 520 479 Q519 555 536 602 Q513 608 482 602Z" fill="url(#trunk)"/>
+<g stroke="url(#twig)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+<path d="M501 457 C457 404 426 350 364 322 C302 293 253 286 198 285" stroke-width="24"/>
+<path d="M506 433 C560 370 611 327 682 307 C740 290 790 281 836 275" stroke-width="24"/>
+<path d="M499 360 C458 316 432 259 405 220 C377 185 338 169 299 167" stroke-width="17"/>
+<path d="M507 342 C557 292 589 240 621 206 C653 174 700 165 735 157" stroke-width="17"/>
+<path d="M502 298 C488 252 474 200 462 158 C454 126 436 108 408 92" stroke-width="14"/>
+<path d="M504 288 C521 241 531 201 548 166 C565 135 593 118 619 107" stroke-width="14"/>
+<path d="M374 326 C346 359 312 368 269 369" stroke-width="9"/>
+<path d="M684 307 C714 337 746 351 784 350" stroke-width="9"/>
+<path d="M410 226 C391 247 358 254 328 254" stroke-width="8"/>
+<path d="M622 205 C652 225 682 228 715 222" stroke-width="8"/>
+</g>
+<path d="M496 580 C502 498 499 424 506 369" stroke="#f2c3a3" stroke-width="4" opacity=".25" fill="none" stroke-linecap="round"/>
+<!-- A few restrained buds and leaves. Every prominent clickable blossom remains a user record. -->
+<g><use href="#sprig" transform="translate(197 285) rotate(-15) scale(1.05)"/><use href="#sprig" transform="translate(265 293) rotate(15) scale(0.83)"/><use href="#sprig" transform="translate(302 168) rotate(-10) scale(0.83)"/><use href="#sprig" transform="translate(341 178) rotate(15) scale(1.05)"/><use href="#sprig" transform="translate(410 93) rotate(-35) scale(0.83)"/><use href="#sprig" transform="translate(462 159) rotate(10) scale(0.83)"/><use href="#sprig" transform="translate(618 107) rotate(30) scale(1.05)"/><use href="#sprig" transform="translate(733 157) rotate(35) scale(0.83)"/><use href="#sprig" transform="translate(834 275) rotate(25) scale(0.83)"/><use href="#sprig" transform="translate(769 283) rotate(-20) scale(1.05)"/><use href="#sprig" transform="translate(269 369) rotate(-35) scale(0.83)"/><use href="#sprig" transform="translate(784 350) rotate(30) scale(0.83)"/><use href="#sprig" transform="translate(328 254) rotate(-30) scale(1.05)"/><use href="#sprig" transform="translate(715 222) rotate(25) scale(0.83)"/></g>
+</svg>

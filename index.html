@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5ec">
+  <meta name="description" content="드라마, 영화, 음악과 그날의 감상을 모으는 나만의 기록장">
+  <link rel="icon" href="assets/moabom-flower.svg" type="image/svg+xml">
+  <title>모아봄 | 나의 취향 기록</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap">
+  <link rel="stylesheet" href="styles.css?v=four-features-22">
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.79.0/dist/umd/supabase.min.js"></script>
+  <script defer src="config.js"></script>
+  <script defer src="app.js?v=four-features-22"></script>
+</head>
+<body>
+<svg class="symbols" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"><symbol viewBox="0 0 24 24" id="i-calendar"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18m-14 4h2m3 0h2m-7 3h2"/></symbol><symbol viewBox="0 0 24 24" id="i-book"><path d="M4 4h13a2 2 0 0 1 2 2v14H6a3 3 0 0 1-3-3V6a2 2 0 0 1 1-2Zm0 13a3 3 0 0 1 3-2h12M8 4v11"/></symbol><symbol viewBox="0 0 24 24" id="i-public"><circle cx="12" cy="12" r="9"/><path d="M3 12h18m-9-9c5 4 5 14 0 18-5-4-5-14 0-18Z"/></symbol><symbol viewBox="0 0 24 24" id="i-user"><circle cx="12" cy="8" r="3.5"/><path d="M5 20v-1a7 7 0 0 1 14 0v1"/></symbol><symbol viewBox="0 0 24 24" id="i-plus"><path d="M12 5v14M5 12h14"/></symbol><symbol viewBox="0 0 24 24" id="i-left"><path d="m14 6-6 6 6 6"/></symbol><symbol viewBox="0 0 24 24" id="i-right"><path d="m10 6 6 6-6 6"/></symbol><symbol viewBox="0 0 24 24" id="i-pen"><path d="m4 15-1 6 6-1L20 9l-5-5L4 15Zm9-9 5 5M4 15l5 5"/></symbol><symbol viewBox="0 0 24 24" id="i-star"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1-4.4-4.3 6.1-.9Z"/></symbol><symbol viewBox="0 0 24 24" id="i-film"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 5v14m10-14v14m-14-9h4m-4 4h4m10-4h4m-4 4h4"/></symbol><symbol viewBox="0 0 24 24" id="i-note"><path d="M9 17V5l11-2v12M9 8l11-2"/><ellipse cx="6" cy="17.5" rx="3" ry="2.5"/><ellipse cx="17" cy="15.5" rx="3" ry="2.5"/></symbol><symbol viewBox="0 0 24 24" id="i-arrow"><path d="M4 12h15m-6-6 6 6-6 6"/></symbol></svg>
+  <a class="skip-link" href="#main">본문으로 이동</a>
+  <header class="masthead">
+    <div class="mast-inner">
+      <a class="brand" href="#calendar" data-target="calendar" aria-label="모아봄 홈"><img src="assets/moabom-flower.svg" width="40" height="40" alt=""><strong>모아봄</strong></a>
+      <span class="mast-divider" aria-hidden="true"></span><span class="brand-sub">나의 콘텐츠 다이어리</span>
+      <div class="account">
+  <span id="userBadge" class="user-badge">방문자</span>
+  <div class="account-menu-wrap">
+    <button type="button" id="profileButton" class="account-btn profile-btn hidden" aria-haspopup="true" aria-expanded="false" aria-controls="accountMenu" aria-label="내 계정 메뉴 열기">
+      <svg class="icon" aria-hidden="true"><use href="#i-user"/></svg>
+      <span id="profileDisplayName">닉네임 설정</span>
+      <span class="account-menu-chevron" aria-hidden="true">⌄</span>
+    </button>
+    <div id="accountMenu" class="account-dropdown hidden" role="group" aria-label="내 계정">
+      <p class="account-dropdown-title">내 계정</p>
+      <button type="button" id="accountEditNickname" class="account-dropdown-action"><span aria-hidden="true">✎</span> 닉네임 변경</button>
+      <button type="button" id="accountLogout" class="account-dropdown-action"><span aria-hidden="true">↪</span> 로그아웃</button>
+    </div>
+  </div>
+  <button type="button" id="authButton" class="account-btn"><svg class="icon" aria-hidden="true"><use href="#i-user"/></svg><span>로그인</span></button>
+</div>
+    </div>
+  </header>
+  <div class="site-nav-shell">
+    <nav class="nav-list" aria-label="모아봄 탐색 메뉴">
+        <button type="button" class="nav-btn active" aria-current="page" data-view="calendar"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg><span>포스터 캘린더</span></button>
+        <button type="button" class="nav-btn" data-view="collection"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span>나의 기록</span></button>
+        <button type="button" class="nav-btn" data-view="public"><svg class="icon" aria-hidden="true"><use href="#i-public"/></svg><span>모두의 기록</span></button>
+        <button type="button" class="nav-btn" data-view="garden"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>취향 정원</span></button>
+        <button type="button" class="nav-btn" data-view="recommend"><svg class="icon" aria-hidden="true"><use href="#i-star"/></svg><span>취향 발견</span></button>
+        <button type="button" class="nav-btn" data-view="spaces"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span>기억 보관함</span></button>
+      
+    </nav>
+    <span class="nav-aside" aria-hidden="true">SPRING, IN EVERY MOMENT <span>✿</span></span>
+  </div>
+  <div class="app-shell">
+    <main class="content" id="main">
+      <section id="calendarView" class="view">
+        <section class="hero" aria-labelledby="homeHeroTitle">
+    <div class="hero-copy">
+      <div class="hero-eyebrow"><span class="hero-eyebrow-dot">✳</span> MOABOM · THE SPRING ARCHIVE <span class="hero-edition">VOL. 01</span></div>
+      <h1 id="homeHeroTitle">오늘 본 것들,<br><em>내일의 취향이 되다.</em></h1>
+      <p>드라마 한 편, 영화 한 장면,<br>플레이리스트 한 곡까지.</p>
+      <button type="button" id="newRecord" class="primary-btn"><svg class="icon" aria-hidden="true"><use href="#i-pen"/></svg> 오늘의 기록 남기기</button>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <img class="hero-art" src="assets/pressed-flowers.svg" alt="" width="410" height="170">
+    </div>
+  </section>
+        <div class="spring-dashboard">
+<section class="calendar-sheet" aria-label="월별 포스터 달력">
+          <div class="calendar-toolbar">
+<div class="month-block">
+            <button type="button" class="month-arrow" id="prevMonth" aria-label="이전 달"><svg class="icon" aria-hidden="true"><use href="#i-left"/></svg></button>
+            <h2 id="monthLabel" aria-live="polite"></h2>
+            <button type="button" class="month-arrow" id="nextMonth" aria-label="다음 달"><svg class="icon" aria-hidden="true"><use href="#i-right"/></svg></button></div>
+            <button type="button" id="todayButton" class="today-button">오늘</button>
+          </div>
+          <div class="calendar-tools-row"><label class="calendar-search"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg><span class="visually-hidden">내 기록 검색</span><input type="search" id="calendarSearch" placeholder="기록에서 작품·음악 찾기" autocomplete="off" aria-controls="calendarSearchResults"></label><div id="calendarSearchResults" class="calendar-search-results hidden" role="region" aria-label="기록 검색 결과" aria-live="polite"></div><span class="calendar-tools-caption">기록을 모을수록 나의 봄이 채워져요.</span></div>
+          <div class="calendar-kind-filter" id="calendarKinds" role="group" aria-label="달력 기록 종류">
+<button type="button" data-calendar-kind="all" aria-pressed="true" class="chip active">전체</button>
+<button type="button" data-calendar-kind="drama" aria-pressed="false" class="chip">드라마</button>
+<button type="button" data-calendar-kind="movie" aria-pressed="false" class="chip">영화</button>
+<button type="button" data-calendar-kind="music" aria-pressed="false" class="chip">음악</button>
+<button type="button" data-calendar-kind="pair" aria-pressed="false" class="chip">음악과 장면</button></div>
+          <div class="calendar" id="calendar"></div>
+          <p class="calendar-hint"><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg> 날짜를 눌러 기록하고, 포스터를 눌러 감상을 열어보세요.</p>
+        </section>
+        <aside class="spring-rail" aria-label="기록 요약">
+          <section class="rail-card monthly-card">
+<div class="rail-heading"><h2 id="railMonth">이달의 기록</h2><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></div>
+            <div class="rail-numbers"><div><strong id="railTotal">0</strong><small>감상 기록</small></div><div><strong id="railRating">—</strong><small>평균 별점</small></div></div>
+            <dl class="kind-tally">
+<div class="tally-drama"><dt><i></i>드라마</dt><dd id="railDrama">0</dd></div>
+<div class="tally-movie"><dt><i></i>영화</dt><dd id="railMovie">0</dd></div>
+<div class="tally-music"><dt><i></i>음악</dt><dd id="railMusic">0</dd></div>
+<div class="tally-pair"><dt><i></i>음악과 장면</dt><dd id="railPair">0</dd></div></dl>
+            <div class="all-total"><span>전체 누적 기록</span><strong id="allTotal">0</strong></div>
+          </section>
+          <section class="rail-card recent-block">
+<div class="rail-heading"><h2>최근 기록</h2>
+<button type="button" class="text-link" data-target="collection" aria-label="나의 기록 모두 보기">전체 <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+<div id="recentRecords"></div>
+</section>
+        </aside></div>
+      </section>
+        <section id="collectionView" class="view hidden">
+<div class="section-head"><div><h1>나의 기록<span>.</span></h1><p>드라마, 영화, 음악을 각각 모아볼 수 있어요.</p></div>
+<button class="primary-btn small" id="collectionAdd">＋ 기록 추가</button></div>
+<div class="feature-tabs" aria-label="내 기록 추가 기능">
+  <button type="button" data-target="collection">전체 기록</button>
+  <button type="button" data-target="rewatch">다시 봄</button>
+  <button type="button" data-target="photocard">모아봄 포토카드</button>
+</div>
+<div class="import-line">
+<button type="button" id="guestImport" class="outline-btn hidden">이전에 작성한 게스트 기록 가져오기</button></div>
+<div class="journal-tools">
+<div class="journal-sort">
+<label for="recordSort">정렬</label>
+<select id="recordSort"><option value="recent">최근 작성순</option><option value="oldest">오래된 기록순</option><option value="dateDesc">감상 날짜 최신순</option><option value="dateAsc">감상 날짜 오래된 순</option><option value="rating">별점 높은 순</option></select></div>
+<div class="journal-export">
+<button type="button" id="exportJson" class="outline-btn">JSON 백업</button>
+<button type="button" id="exportCsv" class="outline-btn">CSV 내보내기</button></div></div>
+
+<div class="filter-bar">
+<div id="filters" class="filter-pills">
+<button class="pill selected" data-filter="all">전체</button>
+<button class="pill" data-filter="drama">드라마</button>
+<button class="pill" data-filter="movie">영화</button>
+<button class="pill" data-filter="music">음악</button>
+<button class="pill" data-filter="pair">음악과 장면</button></div>
+<input id="filterSearch" placeholder="내 기록 검색" aria-label="내 기록 검색"></div>
+<div class="collection-modes" id="collectionModes">
+<button type="button" class="mode active" data-group="entries">전체 기록</button>
+<button type="button" class="mode" data-group="works">작품별</button>
+<button type="button" class="mode" data-group="songs">음악별</button></div>
+<div id="collectionRecords" class="record-grid"></div>
+<div id="groupedRecords" class="grouped-records hidden"></div>
+</section>
+
+        <section id="gardenView" class="view hidden">
+  <div class="section-head"><div><span class="section-kicker">MY BLOOMING GARDEN</span><h1>나의 취향 정원<span>.</span></h1><p>내가 감상한 모든 순간이 꽃으로 피어나는 곳.</p></div></div>
+  <div class="garden-toolbar"><label for="gardenPeriod">정원 기간</label><select id="gardenPeriod"><option value="all">전체 정원</option><option value="year">올해의 정원</option><option value="month">이번 달 정원</option></select><p id="gardenCount" role="status"></p></div>
+  <div id="gardenCanvas" class="garden-canvas" aria-label="감상 기록으로 만든 취향 정원"></div>
+  <p class="feature-muted">드라마·영화·음악 기록이 나무의 각 가지에 꽃으로 피어나요. 꽃 한 송이를 누르면 해당 감상 기록을 볼 수 있어요.</p>
+</section>
+<section id="rewatchView" class="view hidden">
+  <div class="feature-tabs"><button type="button" data-target="collection">전체 기록</button><button type="button" data-target="rewatch">다시 봄</button><button type="button" data-target="photocard">모아봄 포토카드</button></div>
+  <div class="section-head"><div><span class="section-kicker">SEE IT AGAIN</span><h1>다시 봄<span>.</span></h1><p>같은 작품을 다시 만났을 때 달라진 마음을 비교해 보세요.</p></div></div>
+  <form id="rewatchForm" class="feature-form">
+    <label for="rewatchOriginal">처음 감상한 기록<select id="rewatchOriginal" required></select></label>
+    <label for="rewatchNew">다시 감상한 기록<select id="rewatchNew" required></select></label>
+    <label for="rewatchNote">이번에는 무엇이 달랐나요?<textarea id="rewatchNote" maxlength="1800" rows="3" placeholder="달라진 감상, 마음, 새롭게 발견한 장면"></textarea></label>
+    <button type="submit" class="primary-btn">다시 봄 연결하기</button>
+    <p id="rewatchStatus" role="status" class="feature-muted"></p>
+  </form>
+  <div id="rewatchResults" class="rewatch-grid"></div>
+</section>
+<section id="photocardView" class="view hidden">
+  <div class="feature-tabs"><button type="button" data-target="collection">전체 기록</button><button type="button" data-target="rewatch">다시 봄</button><button type="button" data-target="photocard">모아봄 포토카드</button></div>
+  <div class="section-head"><div><span class="section-kicker">COLLECT YOUR MOMENTS</span><h1>모아봄 포토카드<span>.</span></h1><p>좋아했던 작품과 음악을 한 장의 이미지로 간직해 보세요.</p></div></div>
+  <div class="photocard-layout"><div class="feature-form">
+    <label for="cardRecord">감상 기록<select id="cardRecord"></select></label>
+    <label for="cardTemplate">카드 디자인<select id="cardTemplate"><option value="spring">봄날의 기록</option><option value="letter">꽃잎 편지</option><option value="archive">초록 아카이브</option></select></label>
+    <label for="cardCaption">카드에 담을 한 줄<input id="cardCaption" maxlength="110" placeholder="짧은 감상 한 줄"></label>
+    <label class="inline-check"><input id="cardShowRating" type="checkbox" checked> 별점 표시</label>
+    <label class="inline-check"><input id="cardShowDate" type="checkbox" checked> 감상 날짜 표시</label>
+    <button type="button" id="cardDownload" class="primary-btn">PNG 다운로드</button>
+    <p id="cardStatus" class="feature-muted" role="status"></p>
+  </div><div class="photocard-preview" id="cardPreview" aria-label="포토카드 미리보기"></div></div>
+</section>
+<section id="moodView" class="view hidden">
+  <div class="feature-tabs" aria-label="취향 발견 방식"><button type="button" data-target="recommend">취향 추천</button><button type="button" data-target="mood">기분으로 발견하기</button><button type="button" data-target="connections">취향 연결 지도</button></div>
+  <div class="section-head"><div><span class="section-kicker">HOW ARE YOU FEELING TODAY?</span><h1>기분으로 발견하기<span>.</span></h1><p>오늘의 마음과 어울리는 작품과 음악을 찾아보세요.</p></div></div>
+  <div id="moodChoices" class="mood-choices" role="group" aria-label="오늘의 기분"></div>
+  <div class="mood-controls"><label class="inline-check"><input type="checkbox" data-mood-kind="drama" checked> 드라마</label><label class="inline-check"><input type="checkbox" data-mood-kind="movie" checked> 영화</label><label class="inline-check"><input type="checkbox" data-mood-kind="music" checked> 음악</label><button type="button" id="moodRefresh" class="outline-btn">다시 발견하기</button></div>
+  <p id="moodStatus" role="status" class="feature-muted"></p><div id="moodResults" class="recommend-grid"></div>
+</section>
+<section id="recommendView" class="view hidden">
+<div class="feature-tabs" aria-label="취향 발견 방식">
+  <button type="button" data-target="recommend">취향 추천</button>
+  <button type="button" data-target="mood">기분으로 발견하기</button>
+  <button type="button" data-target="connections">취향 연결 지도</button>
+</div>
+          <div class="recommend-hero"><div class="recommend-hero-copy"><span class="section-kicker">A LITTLE DISCOVERY</span><h1>내 취향에 맞는 다음 작품<span>.</span></h1>
+            <p>좋아했던 작품과 음악에서 이어지는 취향, 새로운 이야기를 발견해 보세요.</p></div>
+            <img src="assets/pressed-flowers.svg" alt="" class="recommend-hero-flower" width="190" height="130">
+          </div>
+          <div class="recommend-tools">
+            <div class="recommend-control"><label for="recommendDirection">추천 방향</label>
+              <select id="recommendDirection"><option value="all">내 취향 전체</option><option value="workToMusic">좋아한 작품 → 음악</option><option value="musicToWork">좋아한 음악 → 작품</option></select></div>
+            <div class="recommend-control"><label for="recommendKind">추천 종류</label>
+              <select id="recommendKind"><option value="all">전체</option><option value="drama">드라마</option><option value="movie">영화</option><option value="music">음악</option></select></div>
+            <div class="recommend-control"><label for="recommendRegion">콘텐츠 지역</label>
+              <select id="recommendRegion"><option value="all">전체</option><option value="domestic">국내</option><option value="international">해외</option></select></div>
+            <button type="button" id="recommendRefresh" class="outline-btn">새롭게 추천받기</button>
+          </div>
+          <p id="recommendStatus" class="recommend-status" role="status" aria-live="polite">공개 콘텐츠 중에서 나의 취향을 찾아볼게요.</p>
+          <div id="recommendResults" class="recommend-grid"></div>
+          <button type="button" id="recommendMore" class="outline-btn hidden">다른 추천 더 보기</button>
+          <p class="recommend-disclaimer">공개 기록에 있는 예시 별점과 태그를 참고한 간단한 추천입니다. 공식 콘텐츠 평점이나 전문 추천 엔진의 결과는 아닙니다.</p>
+        </section>
+        <section id="connectionsView" class="view hidden">
+<div class="feature-tabs" aria-label="취향 발견 방식">
+  <button type="button" data-target="recommend">취향 추천</button>
+  <button type="button" data-target="mood">기분으로 발견하기</button>
+  <button type="button" data-target="connections">취향 연결 지도</button>
+</div>
+          <div class="section-head"><div><span class="section-kicker">CONNECTED MOMENTS</span>
+            <h1>취향 연결 지도<span>.</span></h1>
+            <p>하나의 장면에서 떠오른 음악, 비슷한 감정으로 이어지는 작품을 살펴보세요.</p>
+          </div></div>
+          <div class="connections-guide"><span><i class="connection-key song"></i> 작품과 음악의 직접 연결</span>
+            <span><i class="connection-key feeling"></i> 공통 취향 태그</span></div>
+          <p id="connectionStatus" class="connections-status" aria-live="polite"></p>
+          <div id="connectionCanvas" class="connection-canvas" aria-label="내 기록의 취향 연결 관계"></div>
+          <div id="connectionList" class="connection-list"></div>
+          <p class="connection-hint">연결된 기록을 누르면 감상을 열 수 있어요. 연결 지도는 내 계정의 기록으로만 만들어지며 공개되지 않습니다.</p>
+        </section>
+        <section id="spacesView" class="view hidden">
+          <div class="section-head"><div><span class="section-kicker">A HOME FOR YOUR MEMORIES</span>
+            <h1>기억 보관함<span>.</span></h1>
+            <p>좋아하는 장면을 스크랩하고, 마음의 서랍에 담거나 미래의 나에게 전해보세요.</p>
+          </div><button type="button" class="primary-btn" id="spaceAdd">＋ 기억 남기기</button></div>
+          <div class="spaces-tabs" id="spacesTabs" role="group" aria-label="보관함 종류">
+            <button type="button" data-space-kind="moment" class="selected">순간 스크랩북</button>
+            <button type="button" data-space-kind="drawer">마음 서랍</button>
+            <button type="button" data-space-kind="capsule">취향 타임캡슐</button>
+            <button type="button" data-space-kind="letter">미래의 나에게</button>
+          </div>
+          <p class="spaces-helper" id="spacesHelper">기억에 남는 장면이나 한 줄을 사진과 함께 남길 수 있어요.</p>
+          <p class="spaces-status" id="spacesStatus" role="status" aria-live="polite"></p>
+          <div id="spacesResults" class="spaces-grid"></div>
+          <p class="spaces-privacy">이 보관함은 비공개입니다. 로그인한 본인만 저장하고 열람할 수 있어요. 타임캡슐과 편지는 지정한 날짜 전에는 화면에서 내용을 가립니다.</p>
+        </section>
+        <section id="publicView" class="view hidden">
+<div class="section-head"><div><h1>모두의 기록<span>.</span></h1><p>다른 사람들이 공개한 작품과 감상을 읽어보세요.</p></div></div>
+<div class="public-discovery">
+<input id="publicSearch" type="search" placeholder="작품, 음악, 감상평 검색" aria-label="공개 기록 검색">
+<div class="public-filter" id="publicFilters">
+<button type="button" data-public-filter="all" class="selected">전체</button>
+<button type="button" data-public-filter="drama">드라마</button>
+<button type="button" data-public-filter="movie">영화</button>
+<button type="button" data-public-filter="music">음악</button>
+<button type="button" data-public-filter="pair">음악과 장면</button></div>
+<select id="publicSort" aria-label="공개 기록 정렬"><option value="recent">최근 공개 기록순</option><option value="dateDesc">감상 날짜 최신순</option><option value="rating">별점 높은 순</option></select>
+<button type="button" id="discoverPublic" class="outline-btn discover-public">✦ 랜덤 기록 발견하기</button>
+<button type="button" id="refreshPublic" class="outline-btn">새로고침</button></div><p id="publicCount" class="result-count"></p>
+<div id="publicRecords" class="record-grid"></div>
+<button type="button" id="morePublic" class="outline-btn hidden">공개 기록 더 보기</button>
+</section>
+    </main>
+  </div>
+  <footer class="page-footer"><span>✿ 모아봄 <small>· 좋아하는 순간을 모으는 기록장</small></span>
+<button type="button" id="creditsButton" class="text-link">자료 출처</button>
+</footer>
+  <dialog id="dayDialog" class="dialog" aria-labelledby="dayTitle">
+<div class="dialog-body">
+<button type="button" class="close-x" data-close="dayDialog" aria-label="닫기">×</button><h2 id="dayTitle"></h2>
+<div id="dayRecords" class="day-list"></div>
+<button type="button" id="dayNew" class="primary-btn">이 날짜에 기록하기</button></div>
+</dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <dialog id="creditsDialog" class="dialog credits-dialog">
+<div class="dialog-body">
+<button type="button" class="close-x" data-close="creditsDialog" aria-label="닫기">×</button><h2>자료 출처</h2><p class="muted">모아봄은 외부 정보 제공자의 공식 콘텐츠 데이터를 활용하고, 개인의 감상은 작성자가 직접 남기는 웹앱입니다.</p><a href="https://www.themoviedb.org/" target="_blank" rel="noopener noreferrer" class="tmdb-credit"><img src="https://www.themoviedb.org/assets/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="TMDB 공식 로고" loading="lazy"><span>영화·드라마의 제목, 기본 정보, 포스터 제공</span></a><p class="credit-statement">This product uses the TMDB API but is not endorsed or certified by TMDB.</p><p class="muted">음악 검색 정보와 앨범 표지는 MusicBrainz와 Apple 음악 카탈로그에서 제공합니다. 유튜브 링크는 사용자가 선택한 외부 영상으로만 연결되며 영상이나 음원을 모아봄에 복제하지 않습니다.</p><a href="https://musicbrainz.org/" target="_blank" rel="noopener noreferrer" class="text-link">MusicBrainz 공식 사이트 ↗</a><a href="https://www.themoviedb.org/about/logos-attribution" target="_blank" rel="noopener noreferrer" class="text-link">TMDB 출처 및 로고 안내 ↗</a><a class="text-link" href="assets/Pretendard-LICENSE.txt" target="_blank" rel="noopener">Pretendard 글꼴 라이선스 ↗</a></div>
+</dialog>
+  <dialog id="spaceDialog" class="dialog space-dialog" aria-labelledby="spaceDialogTitle">
+    <form id="spaceForm" class="dialog-body">
+      <button type="button" class="close-x" data-close="spaceDialog" aria-label="닫기">×</button>
+      <h2 id="spaceDialogTitle">기억 하나 남기기</h2>
+      <label for="spaceKind">기록 종류
+        <select id="spaceKind">
+          <option value="moment">순간 스크랩북</option><option value="drawer">마음 서랍</option>
+          <option value="capsule">취향 타임캡슐</option><option value="letter">미래의 나에게</option>
+        </select>
+      </label>
+      <label for="spaceTitle">기억의 이름 <input id="spaceTitle" maxlength="120" required placeholder="이 순간의 이름을 지어 주세요"></label>
+      <label for="spaceBody">남겨둘 이야기
+        <textarea id="spaceBody" rows="5" maxlength="5000" placeholder="기억하고 싶은 감정이나 장면을 적어 주세요."></textarea>
+      </label>
+      <div id="spaceMomentFields" class="space-extra">
+        <label for="spaceRecord">연결할 내 기록
+          <select id="spaceRecord"><option value="">연결하지 않음</option></select>
+        </label>
+        <label for="spaceImageFile">사진 업로드 (선택)
+          <input id="spaceImageFile" type="file" accept="image/jpeg,image/png,image/webp">
+        </label>
+        <p class="space-muted">선택한 사진은 본인만 접근할 수 있는 저장소에 업로드됩니다. JPG·PNG·WebP, 최대 5MB.</p>
+        <p id="spaceImageStatus" class="form-note" role="status"></p>
+        <img id="spaceImagePreview" class="space-image-preview hidden" alt="선택한 스크랩북 사진 미리보기">
+        <button type="button" id="spaceImageRemove" class="outline-btn hidden">사진 제거</button>
+        <label for="spaceImageUrl">또는 사진 주소 (선택)
+          <input id="spaceImageUrl" type="url" inputmode="url" maxlength="2000" placeholder="https://...">
+        </label>
+      </div>
+      <div id="spaceDrawerFields" class="space-extra hidden">
+        <p>이 서랍에 모아둘 감상 기록을 선택해 주세요.</p>
+        <div id="spaceRecordChecks" class="space-record-checks"></div>
+      </div>
+      <div id="spaceUnlockFields" class="space-extra hidden">
+        <label for="spaceUnlock">다시 열어볼 날짜
+          <input id="spaceUnlock" type="date">
+        </label>
+        <p class="space-muted">지정한 날짜가 지나면 내용이 화면에 나타나요. 잠금은 콘텐츠 숨김 기능이며 별도의 암호화는 아닙니다.</p>
+      </div>
+      <p id="spaceFeedback" class="save-feedback" role="status"></p>
+      <div class="form-actions">
+        <button type="button" class="danger-link hidden" id="spaceDelete">삭제하기</button>
+        <span class="spacer"></span>
+        <button type="button" class="outline-btn" data-close="spaceDialog">취소</button>
+        <button type="submit" id="spaceSave" class="primary-btn">기억 저장하기</button>
+      </div>
+    </form>
+  </dialog>
+  <dialog id="profileDialog" class="dialog profile-dialog" aria-labelledby="profileTitle">
+    <form id="profileForm" class="dialog-body">
+      <button type="button" class="close-x" data-close="profileDialog" aria-label="닫기">×</button>
+      <h2 id="profileTitle">나만의 닉네임</h2>
+      <p class="muted">모아봄에서 사용할 이름을 정해 주세요. 상단에 이메일 대신 닉네임이 보여요.</p>
+      <label for="profileNickname">닉네임
+        <input id="profileNickname" type="text" maxlength="18" autocomplete="nickname" required placeholder="예: 봄날의 기록가">
+      </label>
+      <p class="form-note">1~18자 · 다른 사용자에게 공개되지 않는 계정 프로필 설정입니다.</p>
+      <p id="profileFeedback" role="status" class="form-note"></p>
+      <button type="submit" id="profileSave" class="primary-btn full">닉네임 저장</button>
+    </form>
+  </dialog>
+  <dialog id="authDialog" aria-labelledby="authTitle" class="dialog auth-dialog">
+<form id="authForm" class="dialog-body">
+<button type="button" class="close-x" data-close="authDialog" aria-label="닫기">×</button><h2 id="authTitle">모아봄에 로그인</h2><p class="muted" id="authDescription">내 감상을 안전하게 기록하고 언제든 다시 꺼내보세요.</p>
+<div class="auth-switch" role="group" aria-label="계정 관리">
+<button type="button" id="authLoginTab" class="active" data-authmode="login">로그인</button>
+<button type="button" id="authSignupTab" data-authmode="signup">회원가입</button>
+<button type="button" data-authmode="reset" id="authResetTab">비밀번호 찾기</button></div>
+<label id="signupNicknameLabel" class="hidden" for="signupNickname">닉네임 <span class="required-mark">(필수)</span><input id="signupNickname" type="text" minlength="1" maxlength="18" autocomplete="nickname" placeholder="예: 봄날의 기록가" aria-describedby="signupNicknameHelp"><small id="signupNicknameHelp" class="nickname-hint">1~18자 · 가입 후에도 변경할 수 있어요.</small></label>
+<label for="email">이메일<input id="email" type="email" autocomplete="email" placeholder="name@example.com" required></label>
+<label id="passwordLabel" for="authPassword">비밀번호<input id="authPassword" type="password" minlength="8" autocomplete="current-password" placeholder="8자 이상" required></label>
+<label id="confirmPasswordLabel" class="hidden" for="authPasswordConfirm">비밀번호 확인<input id="authPasswordConfirm" type="password" minlength="8" autocomplete="new-password" placeholder="비밀번호를 다시 입력하세요"></label>
+<button class="primary-btn full" type="submit" id="authSubmit">로그인</button><p id="authMessage" class="form-note" role="status">내 기록 작성은 로그인 후 사용할 수 있어요. 공개된 기록은 누구나 볼 수 있어요.</p>
+</form>
+</dialog>
+  <dialog id="recordDialog" aria-labelledby="formTitle" class="dialog record-dialog">
+<form id="recordForm" class="dialog-body">
+<button type="button" class="close-x" data-close="recordDialog" aria-label="닫기">×</button><h2 id="formTitle">오늘의 취향을 남겨요</h2>
+<div class="form-tabs" id="kindTabs">
+<button type="button" class="kind-tab active" data-kind="drama">드라마</button>
+<button type="button" class="kind-tab" data-kind="movie">영화</button>
+<button type="button" class="kind-tab" data-kind="music">음악</button>
+<button type="button" class="kind-tab" data-kind="pair">음악과 장면</button></div>
+<label id="pairTypeField" class="hidden">장면이 나오는 작품 종류<select id="pairType"><option value="drama">드라마</option><option value="movie">영화</option></select></label>
+<div class="field">
+<label for="mediaSearch">작품 · 음악 검색</label>
+<div class="search-inline">
+<input id="mediaSearch" type="search" placeholder="작품 제목을 검색하세요" autocomplete="off">
+<button type="button" class="outline-btn" id="searchBtn">검색</button></div><small id="searchHelp" class="form-note">검색 결과를 선택하거나 아래에 직접 입력하세요.</small>
+<div id="searchResults" class="search-results hidden"></div></div>
+<section class="memory-editor" aria-label="작품 정보와 표지">
+<div class="edit-cover">
+<div class="poster-editor">
+<div id="coverPreview" class="cover-preview"><span>✳</span></div>
+<button id="changePoster" class="poster-change-btn" type="button">✧ 포스터 바꾸기</button></div>
+<div class="cover-fields">
+<label for="mediaTitle">작품 이름 <span class="req">*</span></label>
+<input id="mediaTitle" maxlength="180" placeholder="어떤 작품을 기록할까요?" required>
+<label for="mediaSubtitle">가수 · 연도 · 작품 정보</label>
+<input id="mediaSubtitle" maxlength="160" placeholder="선택 입력">
+<input type="hidden" id="posterUrl">
+<input type="hidden" id="tmdbId">
+<input type="hidden" id="tmdbType">
+<input type="hidden" id="musicId">
+<input type="hidden" id="musicArtist">
+<input type="hidden" id="musicAlbum">
+<input type="hidden" id="musicLink">
+<input type="hidden" id="mediaOverview">
+<input type="hidden" id="releaseDate">
+<div id="mediaOverviewPreview" class="media-description hidden"></div></div></div>
+  <section id="musicExtras" class="music-extras hidden" aria-label="음악 정보와 유튜브 링크">
+    <label for="musicArtistInput">가수<input id="musicArtistInput" type="text" maxlength="180" placeholder="가수 또는 아티스트"></label>
+    <label for="musicAlbumInput">앨범<input id="musicAlbumInput" type="text" maxlength="180" placeholder="앨범명 (선택)"></label>
+    <div class="youtube-connect">
+<div class="youtube-connect-heading"><strong>유튜브 영상 연결</strong><small>음악 정보와 별개로 원하는 영상을 연결할 수 있어요.</small></div>
+      <button type="button" id="musicYoutubeSearch" class="outline-btn">유튜브에서 찾아보기 ↗</button>
+      <label for="musicYoutubeUrl">유튜브 영상 링크<input id="musicYoutubeUrl" type="url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="url"></label>
+    </div>
+  </section>
+</section>
+<section class="moment-inputs">
+<div class="watch-date-panel">
+  <div class="watch-date-heading"><strong>감상한 날짜</strong><small>하루에 봤거나 며칠에 걸쳐 감상한 기록을 남길 수 있어요.</small></div>
+  <label for="recordDateMode">감상 기간</label>
+  <select id="recordDateMode"><option value="single">하루에 감상했어요</option><option value="range">여러 날에 걸쳐 감상했어요</option></select>
+  <div id="recordDateSingle"><label class="moment-date" for="recordDate">감상한 날 <input id="recordDate" type="date" required></label></div>
+  <div id="recordDateRange" class="watch-range-row hidden">
+    <label for="recordDateStart">감상 시작일<input id="recordDateStart" type="date"></label>
+    <label for="recordDateEnd">감상 종료일<input id="recordDateEnd" type="date"></label>
+  </div>
+  <small id="recordDateHelp" class="watch-note">기록을 남긴 하루가 달력에 표시돼요.</small>
+</div>
+<section id="dramaWatchFields" class="watch-episodes-panel" aria-label="드라마 정주행 및 회차 기록">
+  <div class="watch-date-heading"><strong>드라마 감상 회차</strong><small>정주행 횟수와 이번에 본 화수를 함께 남겨요.</small></div>
+  <label for="dramaWatchRound">정주행 회차
+    <select id="dramaWatchRound">
+      <option value="1">정주행 1회차</option><option value="2">정주행 2회차</option><option value="3">정주행 3회차</option>
+      <option value="4">정주행 4회차</option><option value="5">정주행 5회차</option>
+      <option value="6">정주행 6회차</option><option value="7">정주행 7회차</option>
+      <option value="8">정주행 8회차</option><option value="9">정주행 9회차</option><option value="10">정주행 10회차</option>
+    </select>
+  </label>
+  <label for="dramaEpisodeMode">오늘 또는 해당 기간에 감상한 회차
+    <select id="dramaEpisodeMode"><option value="range">몇 화부터 몇 화까지</option><option value="all">전편 정주행 (모든 화)</option></select>
+  </label>
+  <div id="dramaEpisodeRange" class="watch-range-row">
+    <label for="dramaEpisodeStart">시작 화<input id="dramaEpisodeStart" type="number" min="1" max="9999" step="1" inputmode="numeric" placeholder="예: 1"></label>
+    <label for="dramaEpisodeEnd">마지막 화<input id="dramaEpisodeEnd" type="number" min="1" max="9999" step="1" inputmode="numeric" placeholder="예: 4"></label>
+  </div>
+  <small id="dramaEpisodeHelp" class="watch-note">예: 정주행 2회차 · 3화~6화</small>
+</section>
+<div class="moment-rating"><span class="rating-title">나의 별점 <span id="ratingLabel" class="rating-label">아직 평가하지 않았어요</span></span>
+<div id="starRating" class="star-rating" role="group" aria-label="별점 선택">
+<button type="button" data-star="1" aria-label="1점">☆</button>
+<button type="button" data-star="2" aria-label="2점">☆</button>
+<button type="button" data-star="3" aria-label="3점">☆</button>
+<button type="button" data-star="4" aria-label="4점">☆</button>
+<button type="button" data-star="5" aria-label="5점">☆</button></div>
+<select id="rating" class="visually-hidden" tabindex="-1" aria-hidden="true"><option value="0">선택 안 함</option><option value="1">1점</option><option value="2">2점</option><option value="3">3점</option><option value="4">4점</option><option value="5">5점</option></select></div>
+</section>
+<section id="pairFields" class="pair-section hidden">
+<div class="pair-section-head"><h3>장면과 음악 이어보기</h3><p>선택한 장면과 떠오른 노래를 함께 담아두세요.</p></div>
+<div class="field">
+<label for="songSearch">연결할 음악 검색</label>
+<div class="search-inline">
+<input type="search" id="songSearch" autocomplete="off" placeholder="노래 제목이나 가수 입력">
+<button type="button" class="outline-btn" id="songSearchBtn">음악 찾기</button></div>
+<div id="songSearchResults" class="search-results hidden"></div></div>
+<div id="linkedSongPreview" class="linked-song-preview hidden"></div>
+<label for="songTitle">연결된 음악 이름 <span class="req">*</span></label>
+<input id="songTitle" maxlength="180" placeholder="검색 결과를 선택하거나 직접 입력">
+<input type="hidden" id="songId">
+<input type="hidden" id="songArtist">
+<input type="hidden" id="songPoster">
+<input type="hidden" id="songLink">
+<label for="songAlbum">앨범<input type="text" id="songAlbum" maxlength="180" placeholder="앨범명 (선택)"></label>
+<label for="songArtistInput">가수<input id="songArtistInput" type="text" maxlength="180" placeholder="가수 또는 아티스트"></label>
+<div class="youtube-connect">
+  <div class="youtube-connect-heading"><strong>이 장면에 연결할 유튜브 영상</strong><small>곡 정보와 유튜브 영상은 따로 저장돼요.</small></div>
+  <button type="button" id="songYoutubeSearch" class="outline-btn">유튜브에서 영상 찾기 ↗</button>
+  <label for="songYoutubeUrl">유튜브 영상 링크<input id="songYoutubeUrl" type="url" placeholder="https://youtu.be/..."></label>
+</div>
+<label for="connectionKind">음악을 연결한 방식</label>
+<select id="connectionKind"><option value="association">장면을 보면서 떠오른 노래</option><option value="ost">OST · 작품에 나온 노래</option><option value="later">노래를 듣다가 장면이 생각났어요</option></select>
+<label for="scene">기억하고 싶은 장면</label>
+<textarea id="scene" maxlength="400" rows="2" placeholder="어떤 회차, 어떤 장면인가요?"></textarea>
+<label for="reason">이 노래와 연결한 이유</label>
+<textarea id="reason" maxlength="400" rows="2" placeholder="왜 이 장면을 떠올렸나요?"></textarea>
+</section>
+<label class="tag-input-label" for="recordTags">취향 태그 <span class="optional">선택</span><input type="text" id="recordTags" maxlength="180" placeholder="예: 위로, 다시 보고 싶은, 설레는" autocomplete="off"><small>쉼표로 구분해 최대 6개까지 저장할 수 있어요.</small></label>
+<label class="review-label">마음에 남긴 이야기<textarea id="review" maxlength="3000" rows="5" placeholder="이 작품의 어떤 점이 좋았나요? 그날의 감상을 자유롭게 남겨보세요."></textarea></label>
+<label class="toggle-line">
+<input id="isPublic" type="checkbox"><span><strong>공개 기록으로 저장</strong><small>켜면 다른 사람도 이 기록을 볼 수 있어요. 기본값: 비공개</small></span></label><p id="saveFeedback" class="save-feedback" role="alert" aria-live="assertive"></p>
+<div class="form-actions">
+<button id="deleteRecord" type="button" class="danger-link hidden">기록 삭제</button><span class="spacer"></span>
+<button type="button" class="outline-btn" data-close="recordDialog">취소</button>
+<button type="submit" id="saveRecord" class="primary-btn small">기록 저장</button></div>
+</form>
+</dialog>
+<dialog id="posterDialog" aria-label="포스터 변경" class="dialog poster-dialog">
+<div class="dialog-body">
+<button class="close-x" type="button" data-close="posterDialog" aria-label="닫기">×</button><h2>내 마음에 드는 포스터</h2><p class="muted">마음에 드는 이미지를 골라 나만의 기록을 완성해요.</p>
+<div class="poster-options">
+<button type="button" class="poster-option active" id="posterTabTmdb">다른 포스터</button>
+<button type="button" class="poster-option" id="posterTabUpload">내 사진 올리기</button>
+<button type="button" class="poster-option" id="posterTabLink">이미지 주소</button></div>
+<section id="posterTmdbPane" class="poster-pane"><p class="form-note" id="posterGalleryInfo">TMDB에서 작품을 선택하면 다른 포스터를 볼 수 있어요.</p>
+<div class="poster-gallery" id="posterGallery"></div>
+<button type="button" class="outline-btn" id="posterGoogle">구글 이미지에서 찾아보기 ↗</button><small class="form-note">검색 결과의 이미지는 저작권과 이용 조건을 확인한 뒤 사용해 주세요.</small>
+</section>
+<section id="posterUploadPane" class="poster-pane hidden">
+<label class="upload-panel" for="posterUpload"><span class="upload-icon">✿</span><strong>사진 선택하기</strong><small>JPG·PNG·WebP · 최대 10MB, 저장 시 압축해요. 사용 권한이 있는 이미지를 골라주세요.</small></label>
+<input type="file" id="posterUpload" accept="image/png,image/jpeg,image/webp" class="visually-hidden"><p id="uploadStatus" class="form-note" role="status"></p>
+</section>
+<section id="posterLinkPane" class="poster-pane hidden"><label>직접 가져온 이미지 주소<input id="posterCustomUrl" type="url" placeholder="https://..."></label>
+<button type="button" class="primary-btn small" id="applyPosterUrl">이 이미지 사용하기</button><small class="form-note">일부 사이트는 외부 이미지 표시를 제한할 수 있어요.</small>
+</section>
+<div class="poster-actions">
+<button type="button" class="text-link" id="resetPoster">포스터 없애기</button>
+<button type="button" class="primary-btn small" data-close="posterDialog">선택 완료</button></div></div>
+</dialog>
+  <dialog id="detailDialog" aria-label="감상 기록 상세" class="dialog detail-dialog">
+<div class="dialog-body">
+<button type="button" class="close-x" data-close="detailDialog" aria-label="닫기">×</button>
+<div id="detailContent"></div>
+<div class="detail-actions">
+<button type="button" id="shareRecord" class="outline-btn hidden">공개 기록 링크 복사</button>
+<button type="button" class="outline-btn" data-close="detailDialog">닫기</button>
+<button type="button" id="editFromDetail" class="primary-btn small">수정하기</button></div></div>
+</dialog>
+</body></html>

@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 620" role="img" aria-label="가느다란 가지와 잎으로 표현한 식물 세밀화 스타일의 나무">
+<defs>
+  <linearGradient id="paper" x1="0" y1="0" x2="0.6" y2="1"><stop stop-color="#F9F7F1"/><stop offset="1" stop-color="#F3F2EB"/></linearGradient>
+  <linearGradient id="bark" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#887A69"/><stop offset=".5" stop-color="#A79A85"/><stop offset="1" stop-color="#746958"/></linearGradient>
+  <pattern id="grain" width="11" height="11" patternUnits="userSpaceOnUse"><circle cx="2" cy="3" r=".55" fill="#9D9687" opacity=".18"/><circle cx="8" cy="9" r=".4" fill="#9D9687" opacity=".16"/></pattern>
+</defs>
+<rect width="1000" height="620" fill="url(#paper)"/><rect width="1000" height="620" fill="url(#grain)"/>
+<g fill="none" stroke="#CBC7B9" stroke-width=".85" opacity=".75">
+<path d="M55 54H172"/><path d="M55 54V164"/><path d="M945 54H828"/><path d="M945 54V164"/><path d="M55 566H172"/><path d="M55 566V475"/><path d="M945 566H828"/><path d="M945 566V475"/>
+</g>
+<g fill="#8D897B" font-family="Georgia, serif" font-size="12" letter-spacing="3" opacity=".85">
+<text x="75" y="87">MOABOM</text><text x="75" y="106" font-size="9" letter-spacing="2.2">BOTANICAL ARCHIVE</text>
+<text x="926" y="86" text-anchor="end" font-size="10">FIG. 01</text>
+</g>
+<g fill="none" stroke="url(#bark)" stroke-linecap="round" stroke-linejoin="round">
+<path d="M501 548C496 512 496 479 503 443C510 408 501 377 486 348" stroke-width="16"/>
+<path d="M500 468C493 420 474 394 447 370C414 344 381 313 348 278C310 239 256 216 198 216" stroke-width="9"/>
+<path d="M476 397C440 356 401 336 347 336C293 337 265 308 244 283" stroke-width="6"/>
+<path d="M448 369C408 304 365 264 319 242C269 218 230 206 173 204" stroke-width="4"/>
+<path d="M485 347C473 304 471 263 480 218C487 184 503 142 521 100" stroke-width="9"/>
+<path d="M484 292C511 241 532 219 563 198C595 177 611 156 635 124" stroke-width="5"/>
+<path d="M500 456C525 406 554 370 600 346C657 316 687 279 710 231C737 193 768 179 829 185" stroke-width="10"/>
+<path d="M545 385C583 333 618 314 663 312C733 309 768 279 792 241" stroke-width="6"/>
+<path d="M577 354C605 279 637 253 684 222C727 193 780 185 845 196" stroke-width="4"/>
+</g>
+<g fill="none" stroke="#8E9177" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+<!-- left fine twigs -->
+<path d="M349 278Q316 256 293 216M319 242Q296 201 269 186M263 215Q236 181 203 174M348 336Q316 314 305 279M284 328Q259 343 229 332M403 317Q378 286 371 253M433 355Q407 346 389 357"/>
+<path d="M246 284Q215 278 187 293M291 236Q273 246 255 258M357 288Q349 257 357 231"/>
+<!-- upper fine twigs -->
+<path d="M483 219Q453 184 437 157M477 259Q442 246 425 220M505 145Q486 122 477 98M514 117Q532 88 553 69M533 216Q531 177 551 153M567 194Q581 155 604 140M590 171Q618 174 652 154"/>
+<!-- right fine twigs -->
+<path d="M662 313Q673 278 688 252M709 232Q706 196 689 176M742 194Q763 164 785 153M773 187Q803 166 837 160M629 326Q635 290 645 271M708 305Q731 313 763 301M777 272Q806 265 833 243M607 330Q605 305 617 288M816 194Q849 210 874 208"/>
+</g>
+<g fill="#A3AD94" fill-opacity=".72" stroke="#78876F" stroke-width=".7">
+<ellipse cx="292" cy="211" rx="12" ry="4.4" transform="rotate(-48 292 211)"/>
+<ellipse cx="266" cy="185" rx="11" ry="4" transform="rotate(22 266 185)"/>
+<ellipse cx="206" cy="174" rx="12" ry="4.5" transform="rotate(-25 206 174)"/>
+<ellipse cx="303" cy="277" rx="11" ry="4" transform="rotate(66 303 277)"/>
+<ellipse cx="230" cy="331" rx="12" ry="4" transform="rotate(24 230 331)"/>
+<ellipse cx="186" cy="294" rx="12" ry="4" transform="rotate(-27 186 294)"/>
+<ellipse cx="371" cy="251" rx="12" ry="4" transform="rotate(-60 371 251)"/>
+<ellipse cx="389" cy="356" rx="11" ry="4" transform="rotate(15 389 356)"/>
+<ellipse cx="437" cy="158" rx="12" ry="4" transform="rotate(42 437 158)"/>
+<ellipse cx="425" cy="220" rx="10" ry="4" transform="rotate(25 425 220)"/>
+<ellipse cx="477" cy="99" rx="12" ry="4" transform="rotate(43 477 99)"/>
+<ellipse cx="552" cy="71" rx="13" ry="4" transform="rotate(-38 552 71)"/>
+<ellipse cx="551" cy="153" rx="12" ry="4" transform="rotate(-64 551 153)"/>
+<ellipse cx="603" cy="140" rx="12" ry="4" transform="rotate(-24 603 140)"/>
+<ellipse cx="650" cy="154" rx="13" ry="4" transform="rotate(18 650 154)"/>
+<ellipse cx="689" cy="175" rx="12" ry="4" transform="rotate(70 689 175)"/>
+<ellipse cx="784" cy="153" rx="12" ry="4" transform="rotate(-33 784 153)"/>
+<ellipse cx="838" cy="160" rx="12" ry="4" transform="rotate(24 838 160)"/>
+<ellipse cx="872" cy="207" rx="13" ry="4" transform="rotate(27 872 207)"/>
+<ellipse cx="833" cy="243" rx="12" ry="4" transform="rotate(-39 833 243)"/>
+<ellipse cx="763" cy="301" rx="11" ry="4" transform="rotate(24 763 301)"/>
+<ellipse cx="646" cy="270" rx="10" ry="4" transform="rotate(-63 646 270)"/>
+<ellipse cx="617" cy="288" rx="11" ry="4" transform="rotate(-53 617 288)"/>
+</g>
+<g fill="none" stroke="#A29A87" stroke-width="1" opacity=".9"><path d="M453 565Q501 558 551 565"/><path d="M475 571Q503 567 536 571"/></g>
+<g fill="#77766D" font-family="Georgia, serif" opacity=".75">
+<text x="76" y="530" font-size="10" letter-spacing="2">YOUR DAYS,</text><text x="76" y="549" font-size="10" letter-spacing="2">IN BLOOM.</text>
+<text x="923" y="537" text-anchor="end" font-size="10" letter-spacing="1.6">A COLLECTION OF MOMENTS</text>
+</g>
+</svg>
